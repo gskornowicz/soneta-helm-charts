@@ -30,7 +30,6 @@ rules:
   - patch
   - update
   - delete
-  - logs
 - apiGroups:
   - apps
   resources:
