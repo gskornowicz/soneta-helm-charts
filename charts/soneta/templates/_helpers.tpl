@@ -57,6 +57,17 @@ app.kubernetes.io/version: {{ $.Values.image.tag | quote }}
 {{- end -}}
 
 {{/*
+Create the name of the service account to use
+*/}}
+{{- define "soneta.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create -}}
+    {{ default (include "soneta.fullname" (list . "serviceaccount")) .Values.serviceAccount.name }}
+{{- else -}}
+    {{ default "default" .Values.serviceAccount.name }}
+{{- end -}}
+{{- end -}}
+
+{{/*
 Other
 */}}
 

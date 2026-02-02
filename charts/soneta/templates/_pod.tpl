@@ -14,6 +14,10 @@ metadata:
   labels:
 {{ include "soneta.labels" . | indent 4 }}
 spec:
+  {{- with $.Values.podSecurityContext }}
+  securityContext:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   containers:
     - name: "{{ $.Chart.Name }}-{{ $component }}-{{ $.Values.image.product}}"
       image: "{{ include "soneta.image.component" . }}"
@@ -116,7 +120,5 @@ spec:
   tolerations:
     {{- toYaml . | nindent 4 }}
 {{- end }}
-{{- if eq $component "orchestrator"}}
-  serviceAccountName: {{ include "soneta.fullname" . }}
-{{- end -}}
+  serviceAccountName: {{ include "soneta.serviceAccountName" $ }}
 {{- end -}}

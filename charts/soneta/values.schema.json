@@ -228,6 +228,34 @@
             }
         },
 
+        "serviceAccount": {
+            "type": "object",
+            "description": "ServiceAccount configuration. Allows you to specify whether to create a new ServiceAccount or use an existing one.",
+            "properties": {
+                "create": {
+                    "type": "boolean",
+                    "default": false
+                },
+                "annotations": {
+                    "type": "object",
+                    "additionalProperties": { "type": "string" }
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "podSecurityContext": {
+            "type": "object",
+            "description": "Pod-level security settings, such as runAsUser, runAsGroup, fsGroup.",
+            "properties": {
+                "runAsUser": { "type": "integer" },
+                "runAsGroup": { "type": "integer" },
+                "fsGroup": { "type": "integer" }
+            }
+        },
+
         "nodeSelector": {
             "type": "array",
             "description": "List of Kubernetes node selectors on which pods should be scheduled."
