@@ -30,5 +30,5 @@ entries:
     - https://github.com/soneta/helm-charts/tree/main/charts/soneta
     - https://github.com/soneta/helm-charts
     urls:
-    - https://github.com/gskornowicz/soneta-helm-charts/releases/download/soneta-0.5.4/soneta-0.5.4.tgz
-    version: 0.5.4
+    - https://github.com/gskornowicz/soneta-helm-charts/releases/download/soneta-0.5.5/soneta-0.5.5.tgz
+    version: 0.5.5
