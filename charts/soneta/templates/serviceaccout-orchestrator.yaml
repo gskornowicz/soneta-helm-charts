@@ -1,4 +1,5 @@
 {{- $saName := include "soneta.serviceAccountName" . -}}
+{{- $roleName := printf "%s-%s" $saName .Release.Name -}}
 {{- if .Values.serviceAccount.create -}}
 apiVersion: v1
 kind: ServiceAccount
@@ -14,7 +15,7 @@ metadata:
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ $saName }}
+  name: {{ $roleName }}
 rules:
 - apiGroups:
   - ""
@@ -53,11 +54,11 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ $saName }}
+  name: {{ $roleName }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: {{ $saName }}
+  name: {{ $roleName }}
 subjects:
   - kind: ServiceAccount
     name: {{ $saName }}
